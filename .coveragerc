@@ -1,0 +1,16 @@
+[paths]
+source =
+   src/mann2
+   */site-packages/mann2
+
+[run]
+branch = True
+source =
+    mann2
+    tests
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit = *migrations*
