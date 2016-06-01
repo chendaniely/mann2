@@ -81,7 +81,7 @@ Overview
 
 Multi Agent Neural Network
 
-* Free software: BSD license
+* Free software: MIT license
 
 Installation
 ============
