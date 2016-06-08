@@ -12,7 +12,7 @@ class NetworkWatts(network.Network):
 
         print(self.config)
 
-    def generate_network(self):
+    def create_agents_in_graph(self):
         self.logger.info('Adding agents into graph')
         num_agents = int(self.config['single_sim']['num_agents'])
         all_agents = {}
@@ -26,6 +26,7 @@ class NetworkWatts(network.Network):
             self.logger.debug(
                 'Agent {} added to dict of all_agents'.format(new_agent.agent_id))
 
+    def generate_graph_network(self):
         self.logger.debug("Connecting agents into network")
             self.graph.add_edge(all_agents[u], all_agents[v])
         nx.draw_circular(self.graph)

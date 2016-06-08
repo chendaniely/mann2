@@ -32,4 +32,4 @@ class Network(abc.ABC):
         nx.write_edgelist(network, nx_edge_list_filename)
 
     @abc.abstractmethod
-    def generate_network(self): pass
+    def generate_graph_network(self): pass
