@@ -21,6 +21,7 @@ class ModelWatts(model_binary.ModelBinary):
         self.logger.info('Setting up Model Graph')
         self.network = network_watts.NetworkWatts(self.config, self.logger)
         self.network.create_agents_in_graph().generate_graph_network()
+        return(self)
 
     def setup_model_run(self):
         self.logger.info('Setting up Model Run')
