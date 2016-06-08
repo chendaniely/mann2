@@ -18,5 +18,5 @@ class Agent(abc.ABC):
 
     @state.setter
     @abc.abstractmethod
-    def state(self, new_state):
-        self._state = new_state
+    def state(self):
+        pass
