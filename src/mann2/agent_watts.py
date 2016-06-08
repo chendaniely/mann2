@@ -25,3 +25,6 @@ class AgentWatts(agent_binary.AgentBinary):
         return '{}-{} STATE:{}'.\
             format(self.__class__.__name__, self.agent_id, self.state)
 
+    @property
+    def agent_id(self):
+        return self._agent_id
