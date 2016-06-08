@@ -8,8 +8,9 @@ class Agent(abc.ABC):
         pass
 
     @property
+    @abc.abstractmethod
     def agent_id(self):
-        return self._agent_id
+        pass
 
     @property
     def state(self):
