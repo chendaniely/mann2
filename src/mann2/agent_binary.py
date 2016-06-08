@@ -12,5 +12,6 @@ class AgentBinary(agent.Agent):
 
     @state.setter
     def state(self, new_state):
-        assert new_state in [0, 1]
+        assert new_state in [0, 1],\
+            "Expected a 0 or 1, got {} instead".format(new_state)
         self._state = new_state
