@@ -20,3 +20,8 @@ class AgentWatts(agent_binary.AgentBinary):
 
     def __hash__(self):
         return hash(self.agent_id)
+
+    def __repr__(self):
+        return '{}-{} STATE:{}'.\
+            format(self.__class__.__name__, self.agent_id, self.state)
+
