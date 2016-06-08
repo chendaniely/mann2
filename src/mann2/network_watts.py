@@ -13,17 +13,12 @@ class NetworkWatts(network.Network):
     def create_agents_in_graph(self):
         self.logger.info('Adding agents into graph')
         num_agents = int(self.config['single_sim']['num_agents'])
-        # self.all_agents = {}
         for _ in range(num_agents):
             new_agent = agent_watts.AgentWatts(self.config, self.logger)
 
             self.graph.add_node(new_agent.agent_id, agent=new_agent)
             self.logger.debug(
                 'Agent {} added to graph'.format(new_agent.agent_id))
-
-            # self.all_agents[new_agent.agent_id] = new_agent
-            # self.logger.debug(
-            #     'Agent {} added to dict of all_agents'.format(new_agent.agent_id))
         return(self)
 
     def generate_graph_network(self):
