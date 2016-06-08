@@ -3,6 +3,10 @@ import abc
 
 class Agent(abc.ABC):
 
+    @abc.abstractmethod
+    def __repr__(self):
+        pass
+
     @property
     def agent_id(self):
         return self._agent_id
