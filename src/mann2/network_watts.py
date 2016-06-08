@@ -27,8 +27,8 @@ class NetworkWatts(network.Network):
                 'Agent {} added to dict of all_agents'.format(new_agent.agent_id))
 
         self.logger.debug("Connecting agents into network")
-        for u, v in self.network.edges_iter():
             self.graph.add_edge(all_agents[u], all_agents[v])
         nx.draw_circular(self.graph)
         plt.show()
+        for u, v in self.nx_graph.edges_iter():
         self.logger.info("Network Graph of agents created.")
