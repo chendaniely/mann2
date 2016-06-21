@@ -1,4 +1,4 @@
-import agent
+from mann2 import agent
 
 
 class AgentBinary(agent.Agent):

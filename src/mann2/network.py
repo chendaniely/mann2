@@ -33,3 +33,9 @@ class Network(abc.ABC):
 
     @abc.abstractmethod
     def generate_graph_network(self): pass
+
+    @abc.abstractmethod
+    def seed_agents(self): pass
+
+    @abc.abstractmethod
+    def step(self): pass

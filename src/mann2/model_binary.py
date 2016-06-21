@@ -1,7 +1,7 @@
 # from abc import ABCMeta, abstractmethod
 import logging
 
-import model
+from mann2 import model
 
 
 class ModelBinary(model.Model):
