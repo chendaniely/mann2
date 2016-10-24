@@ -40,8 +40,7 @@ class ModelWatts(model_binary.ModelBinary, HelperTqdm):
 
         total_ticks = range(self.config['single_sim']['num_time_ticks'])
 
-        tqdm_sim_num, tqdm_show, tqdm_position = self.parse_tqdm_config(
-            self.config)
+        tqdm_sim_num, tqdm_show, tqdm_position = self.parse_tqdm_config(self.config)
         for time_tick in tqdm(total_ticks,
                               desc='Sim:{} Steps'.format(tqdm_sim_num),
                               disable=tqdm_show,

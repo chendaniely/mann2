@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import random
 import sys
-from time import sleep
+# from time import sleep  # used for testing
 
 from tqdm import tqdm
 
@@ -83,25 +83,26 @@ class NetworkWatts(network.Network, HelperTqdm):
                                  leave=False):
                 agent_selected = self.graph.node[agent_id]['agent']
                 self.logger.info("Seeding Agent: {}".format(agent_selected))
-                agent_selected.state =\
-                    self.config['single_sim']['seed_agents']['seed_value']
+
+                agent_selected.state = self.config['single_sim']['seed_agents']['seed_value']
                 self.logger.debug("Seed values added to past states t=-1")
+
                 agent_selected.past_states_for_write = -1
-                self.logger.debug("Finished Seeding Agent: {}".
-                                  format(agent_selected))
+                self.logger.debug("Finished Seeding Agent: {}".format(agent_selected))
         else:
             raise ValueError('Unknown seeding method passed')
 
     def scheduler_random_sequential_update(self, time_tick,
                                            output_f_agent_step_info):
         self.logger.debug("Scheduler: Random Sequential Update")
-        num_agents_update = eval(self.config['single_sim'][
-            'scheduler']['num_agents_update'])
+        num_agents_update = eval(self.config['single_sim']['scheduler']['num_agents_update'])
         self.logger.debug("Num agents to update: {}".
                           format(num_agents_update))
         shuffled_agents = random.sample(self.graph.nodes(), num_agents_update)
         self.logger.debug("Shuffled agents: {}".format(shuffled_agents))
         for idx, agent_id in enumerate(shuffled_agents):
+            # TODO this update code should be moved into the AgentWatts code
+            # so the call becomes something like: agent.update('')
             agent = self.graph.node[agent_id]['agent']
             self.logger.debug('Updating Agent: {}'.format(agent))
             predecessors = self.graph.predecessors(agent_id)
@@ -135,15 +136,12 @@ class NetworkWatts(network.Network, HelperTqdm):
 
             agent.past_states_for_write = time_tick
             size_of_past_states = sys.getsizeof(agent.past_states_for_write)
-            self.logger.debug("size of past states: {} len of past states: {}"
-                              .format(
-                                  size_of_past_states,
-                                  (agent.past_states_for_write)))
-            agent_write_size_threshold = self.config[
-                'single_sim']['agent_write_size']
+            self.logger.debug("size of past states: {} len of past states: {}".format(
+                size_of_past_states,
+                (agent.past_states_for_write)))
+            agent_write_size_threshold = self.config['single_sim']['agent_write_size']
             if size_of_past_states >= agent_write_size_threshold:
-                self.logger.debug(
-                    'State size threshold limit reached, writing to output...')
+                self.logger.debug('State size threshold limit reached, writing to output...')
                 output_f_agent_step_info.write(
                     "{},{}\n".format(time_tick, agent.state_string))
                 agent.past_states_for_write = {}

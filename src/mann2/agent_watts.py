@@ -24,10 +24,10 @@ class AgentWatts(agent_binary.AgentBinary):
         return hash(self.agent_id)
 
     def __repr__(self):
-        return '{}-{} STATE:{} TH:{}'.\
-            format(self.__class__.__name__,
-                   self.agent_id, self.state,
-                   self.threshold)
+        return '{}-{} STATE:{} TH:{}'.format(
+            self.__class__.__name__,
+            self.agent_id, self.state,
+            self.threshold)
 
     def state_string(self):
         return self.state
@@ -51,6 +51,5 @@ class AgentWatts(agent_binary.AgentBinary):
 
     @past_states_for_write.setter
     def past_states_for_write(self, time):
-        assert self._past_states_for_write.get(time) is None,\
-            "Time already exists"
+        assert self._past_states_for_write.get(time) is None, "Time already exists"
         self._past_states_for_write[time] = self.state
