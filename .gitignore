@@ -122,3 +122,5 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+/src/classes_mann2.png
+/src/packages_mann2.png
