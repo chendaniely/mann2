@@ -88,7 +88,8 @@ Installation
 
 ::
 
-    pip install mann2
+    # pip install mann2
+    pip install -e .
 
 Documentation
 =============
