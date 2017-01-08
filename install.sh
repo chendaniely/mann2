@@ -1,3 +1,3 @@
-conda install pyyaml matplotlib
+conda install pyyaml matplotlib joblib
 
 pip install tqdm
